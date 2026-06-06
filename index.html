@@ -5,40 +5,42 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <header>
-            <svg viewBox="0 0 1920 220">
-                <defs>
-                    <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#FF4843; stop-opacity:1"/>
-                        <stop offset="100%" style="stop-color:#FDEA97; stop-opacity:1"/>
-                    </linearGradient>
-                </defs>
-                <path d="M25 25 H1895 V195 H25 Z" fill="none" stroke="url(#frameGradient)" stroke-width="5"/>
-                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="48" font-family="Arial" font-weight="bold" fill="#333">BonkHero<animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/></text>
-            </svg>
-            <nav aria-label="Navigation bar" class="nav-bar">
-                <p>BonkHero</p>
-                <div class="links">
-                    <a draggable="false" href="#">Home</a>
-                    <a draggable="false" href="/leaderboard">Leaderboard</a>
-                    <a draggable="false" href="/social">Social</a>
-                </div>
-                <div class="right-controls">
-                    <div class="alerts-wrapper">
-                        <button class="alerts-btn">Alerts</button>
+        <div class="container">
+            <header>
+                <svg viewBox="0 0 1920 220">
+                    <defs>
+                        <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FF4843; stop-opacity:1"/>
+                            <stop offset="100%" style="stop-color:#FDEA97; stop-opacity:1"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M25 25 H1895 V195 H25 Z" fill="none" stroke="url(#frameGradient)" stroke-width="5"/>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="48" font-family="Arial" font-weight="bold" fill="#333">BonkHero<animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/></text>
+                </svg>
+                <nav aria-label="Navigation bar" class="nav-bar">
+                    <p>BonkHero</p>
+                    <div class="links">
+                        <a draggable="false" href="#">Home</a>
+                        <a draggable="false" href="/leaderboard">Leaderboard</a>
+                        <a draggable="false" href="/social">Social</a>
+                    </div>
+                    <div class="right-controls">
+                        <div class="alerts-wrapper">
+                            <button class="alerts-btn">Alerts</button>
 
-                        <div class="alerts-dropdown">
-                            <p class="alert-item">No new alerts</p>
-                            <a class="alert-item" href="#">View all</a>
+                            <div class="alerts-dropdown">
+                                <p class="alert-item">No new alerts</p>
+                                <a class="alert-item" href="#">View all</a>
+                            </div>
+                        </div>
+
+                        <div class="Search">
+                            <input type="text" placeholder="Search...">
                         </div>
                     </div>
-
-                    <div class="Search">
-                        <input type="text" placeholder="Search...">
-                    </div>
-                </div>
-            </nav>
-        </header>
+                </nav>
+            </header>
+        </div>
         <script type="module" src="main.js"></script>
     </body>
 </html>
