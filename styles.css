@@ -345,21 +345,48 @@ header nav .right-controls {
    THEME TOGGLE BUTTON
     ========================================================= */
 
-.theme-btn {
-    background: none;
+.theme-switch {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 64px;
+    height: 32px;
+
+    padding: 4px;
+
     border: 1px solid #555;
+    border-radius: 999px;
 
-    color: white;
+    background: #2f2f2f;
+
     cursor: pointer;
-
-    padding: 6px 10px;
-    border-radius: 4px;
-
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease;
 }
 
-.theme-btn:hover {
-    background: rgba(255,255,255,0.1);
+.theme-icon {
+    z-index: 2;
+    font-size: 14px;
+    width: 20px;
+    text-align: center;
+}
+
+.theme-slider {
+    position: absolute;
+
+    left: 4px;
+    top: 4px;
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+    background: white;
+
+    transition: transform 0.25s ease;
+}
+
+.theme-switch.dark .theme-slider {
+    transform: translateX(32px);
 }
