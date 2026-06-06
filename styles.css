@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --light-theme-bg: #ffffff;
+    --light-theme-text: #000000;
+    --dark-theme-bg: #121212;
+    --dark-theme-text: #ffffff;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ---------------- HEADER ---------------- */
+
+header {
+    background-color: #f4f4f4;
+    text-align: center;
+    height: 240px;
+    width: 1920px;
+}
+
+/* ---------------- NAV ---------------- */
+
+header nav {
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 1rem;
+    position: relative;
+    user-select: none;
+}
+
+/* Left brand */
+header nav p {
+    margin: 0;
+    color: #8f35b3;
+    font-size: 1.2rem;
+}
+
+header nav p:hover {
+    color: #9b59b6;
+}
+
+/* Center links */
+header nav .links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+}
+
+header nav .links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 14px;
+    border-radius: 4px;
+
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav .links a:hover {
+    background-color: #555;
+    text-decoration: underline;
+}
+
+/* Right controls container */
+header nav .right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Alerts button */
+header nav .right-controls .alerts-btn {
+    background: none;
+    border: 1px solid #555;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Wrapper for dropdown positioning */
+header nav .right-controls .alerts-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* ---------------- DROPDOWN ---------------- */
+
+.alerts-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    background: #222;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    min-width: 160px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: 
+        opacity 0.25s ease,
+        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Open state */
+.alerts-dropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ---------------- ALERT ITEMS ---------------- */
+
+.alert-item {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.alert-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
