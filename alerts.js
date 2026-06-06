@@ -4,13 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const dropdown = document.querySelector('.alerts-dropdown');
 
     let open = false;
-
     let alerts = [];
 
+    // -----------------------------
+    // UI STATE
+    // -----------------------------
     function updateAlertState() {
         wrapper.classList.toggle('has-alerts', alerts.length > 0);
     }
 
+    // -----------------------------
+    // RENDER ALERTS
+    // -----------------------------
     function renderAlerts() {
         dropdown.innerHTML = "";
 
@@ -29,14 +34,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             item.style.transitionDelay = `${index * 60}ms`;
 
+            dropdown.appendChild(item);
+
             requestAnimationFrame(() => {
                 item.classList.add("visible");
             });
-
-            dropdown.appendChild(item);
         });
     }
 
+    // -----------------------------
+    // ALERT MANAGEMENT API
+    // -----------------------------
     function addAlert(message) {
         alerts.push({
             id: Date.now(),
@@ -56,11 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function clearAlerts() {
         alerts = [];
-
         updateAlertState();
         renderAlerts();
     }
 
+    // -----------------------------
+    // DROPDOWN CONTROL
+    // -----------------------------
     function openDropdown() {
         dropdown.classList.add('show');
         open = true;
@@ -72,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdown.classList.remove('show');
     }
 
-    alertsBtn.addEventListener('click', (e) => {
+    function toggleDropdown(e) {
         e.stopPropagation();
 
         if (open) {
@@ -80,13 +90,33 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             openDropdown();
         }
+    }
+
+    // -----------------------------
+    // EVENTS
+    // -----------------------------
+
+    alertsBtn.addEventListener('click', toggleDropdown);
+
+    // IMPORTANT: prevents clicks inside dropdown closing it
+    dropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
     });
 
-    document.addEventListener('click', closeDropdown);
+    // safer than stopPropagation-only approach
+    document.addEventListener('click', (e) => {
+        if (!wrapper.contains(e.target)) {
+            closeDropdown();
+        }
+    });
 
+    // -----------------------------
+    // INIT
+    // -----------------------------
     updateAlertState();
     renderAlerts();
 
+    // expose API globally
     window.addAlert = addAlert;
     window.removeAlert = removeAlert;
     window.clearAlerts = clearAlerts;
