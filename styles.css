@@ -242,18 +242,34 @@ header nav .right-controls {
 }
 
 /* =========================================================
+   ALERT SECTIONS
+   ========================================================= */
+
+.alert-section-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    margin: 8px 4px 6px;
+    text-transform: uppercase;
+}
+
+/* =========================================================
    ALERT ITEMS
    ========================================================= */
 
 .alert-item {
-    display: flex;
-    align-items: center;
+    width: 100%;
+
+    display: block;
+    text-align: left;
+
+    word-break: break-word;
+    white-space: normal;
 
     padding: 10px 12px;
     margin-bottom: 6px;
 
     border-radius: 6px;
-
     background: rgba(255, 255, 255, 0.06);
     color: #fff;
 

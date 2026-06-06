@@ -4,22 +4,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const dropdown = document.querySelector('.alerts-dropdown');
 
     let open = false;
-    let alerts = [];
 
     // -----------------------------
-    // UI STATE
+    // DATA MODEL
+    // -----------------------------
+    let alerts = [];
+
+    function now() {
+        return new Date();
+    }
+
+    function isToday(date) {
+        const d = new Date(date);
+        const today = new Date();
+
+        return (
+            d.getFullYear() === today.getFullYear() &&
+            d.getMonth() === today.getMonth() &&
+            d.getDate() === today.getDate()
+        );
+    }
+
+    // -----------------------------
+    // STATE
     // -----------------------------
     function updateAlertState() {
         wrapper.classList.toggle('has-alerts', alerts.length > 0);
     }
 
     // -----------------------------
-    // RENDER ALERTS
+    // GROUP ALERTS
+    // -----------------------------
+    function groupAlerts() {
+        return {
+            today: alerts.filter(a => isToday(a.createdAt)),
+            earlier: alerts.filter(a => !isToday(a.createdAt))
+        };
+    }
+
+    // -----------------------------
+    // RENDER SYSTEM
     // -----------------------------
     function renderAlerts() {
         dropdown.innerHTML = "";
 
-        if (alerts.length === 0) {
+        const grouped = groupAlerts();
+
+        const hasAny =
+            grouped.today.length > 0 || grouped.earlier.length > 0;
+
+        if (!hasAny) {
             const empty = document.createElement("p");
             empty.className = "alert-item visible";
             empty.textContent = "No new alerts";
@@ -27,28 +61,44 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        alerts.forEach((alert, index) => {
-            const item = document.createElement("div");
-            item.className = "alert-item";
-            item.textContent = alert.message;
+        // helper to create section
+        function createSection(title, items) {
+            if (items.length === 0) return;
 
-            item.style.transitionDelay = `${index * 60}ms`;
+            const header = document.createElement("div");
+            header.className = "alert-section-title";
+            header.textContent = title;
 
-            dropdown.appendChild(item);
+            dropdown.appendChild(header);
 
-            requestAnimationFrame(() => {
-                item.classList.add("visible");
+            items.forEach((alert, index) => {
+                const item = document.createElement("div");
+                item.className = "alert-item";
+                item.textContent = alert.message;
+
+                item.style.transitionDelay = `${index * 60}ms`;
+
+                dropdown.appendChild(item);
+
+                requestAnimationFrame(() => {
+                    item.classList.add("visible");
+                });
             });
-        });
+        }
+
+        createSection("TODAY", grouped.today);
+        createSection("EARLIER", grouped.earlier);
     }
 
     // -----------------------------
-    // ALERT MANAGEMENT API
+    // API
     // -----------------------------
     function addAlert(message) {
-        alerts.push({
+        alerts.unshift({
             id: Date.now(),
-            message
+            message,
+            createdAt: new Date(),
+            read: false
         });
 
         updateAlertState();
@@ -57,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function removeAlert(id) {
         alerts = alerts.filter(a => a.id !== id);
-
         updateAlertState();
         renderAlerts();
     }
@@ -68,8 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
         renderAlerts();
     }
 
+    function markAllRead() {
+        alerts = alerts.map(a => ({ ...a, read: true }));
+        updateAlertState();
+        renderAlerts();
+    }
+
     // -----------------------------
-    // DROPDOWN CONTROL
+    // UI CONTROL
     // -----------------------------
     function openDropdown() {
         dropdown.classList.add('show');
@@ -84,26 +139,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function toggleDropdown(e) {
         e.stopPropagation();
-
-        if (open) {
-            closeDropdown();
-        } else {
-            openDropdown();
-        }
+        open ? closeDropdown() : openDropdown();
     }
 
     // -----------------------------
     // EVENTS
     // -----------------------------
-
     alertsBtn.addEventListener('click', toggleDropdown);
 
-    // IMPORTANT: prevents clicks inside dropdown closing it
     dropdown.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
-    // safer than stopPropagation-only approach
     document.addEventListener('click', (e) => {
         if (!wrapper.contains(e.target)) {
             closeDropdown();
@@ -116,8 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateAlertState();
     renderAlerts();
 
-    // expose API globally
+    // expose API
     window.addAlert = addAlert;
     window.removeAlert = removeAlert;
     window.clearAlerts = clearAlerts;
+    window.markAllRead = markAllRead;
 });
