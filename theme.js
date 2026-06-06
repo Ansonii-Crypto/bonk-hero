@@ -6,7 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
-        document.body.classList.add("dark-theme");
+        const transition = document.querySelector(".theme-transition");
+        const goingDark = !document.body.classList.contains("dark-theme");
+
+        transition.classList.add(
+            goingDark ? "active-right" : "active-left"
+        );
+
+        setTimeout(() => {
+            document.body.classList.toggle("dark-theme");
+        }, 250);
+
+        setTimeout(() => {
+            transition.classList.remove(
+                "active-right",
+                "active-left"
+            );
+        }, 500);
         button.classList.add("dark");
     }
 

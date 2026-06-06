@@ -366,10 +366,18 @@ header nav .right-controls {
 }
 
 .theme-icon {
-    z-index: 2;
-    font-size: 14px;
-    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    
+    width: 20px;
+    height: 20px;
+    
+    line-height: 1;
+    font-size: 14px;
+
+    z-index: 2;
 }
 
 .theme-slider {
@@ -389,4 +397,52 @@ header nav .right-controls {
 
 .theme-switch.dark .theme-slider {
     transform: translateX(32px);
+}
+
+.theme-transition {
+    position: fixed;
+    inset: 0;
+
+    background: #121212;
+
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    z-index: 999999;
+}
+
+.theme-transition.active-right {
+    animation: themeWipeRight 0.5s ease forwards;
+}
+
+.theme-transition.active-left {
+    animation: themeWipeLeft 0.5s ease forwards;
+}
+
+@keyframes themeWipeRight {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes themeWipeLeft {
+    0% {
+        transform: translateX(100%);
+    }
+
+    50% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }
