@@ -5,22 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let open = false;
 
-    // -----------------------------
-    // DATA LAYER (your alerts)
-    // -----------------------------
+    // -------------------------
+    // DATA (your alerts)
+    // -------------------------
     let alerts = [];
 
-    // -----------------------------
-    // STATE: does user have alerts?
-    // -----------------------------
+    // -------------------------
+    // STATE: visual indicator
+    // -------------------------
     function updateAlertState() {
-        const hasAlerts = alerts.length > 0;
-        wrapper.classList.toggle('has-alerts', hasAlerts);
+        wrapper.classList.toggle('has-alerts', alerts.length > 0);
     }
 
-    // -----------------------------
-    // RENDER ALERTS (UI layer)
-    // -----------------------------
+    // -------------------------
+    // RENDER DROPDOWN
+    // -------------------------
     function renderAlerts() {
         dropdown.innerHTML = "";
 
@@ -47,35 +46,42 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // -----------------------------
-    // ADD / REMOVE ALERTS API
-    // -----------------------------
+    // -------------------------
+    // ADD ALERT
+    // -------------------------
     function addAlert(message) {
         alerts.push({
             id: Date.now(),
             message
         });
 
-        renderAlerts();
         updateAlertState();
+        renderAlerts();
     }
 
+    // -------------------------
+    // REMOVE ALERT
+    // -------------------------
     function removeAlert(id) {
         alerts = alerts.filter(a => a.id !== id);
 
-        renderAlerts();
         updateAlertState();
+        renderAlerts();
     }
 
+    // -------------------------
+    // CLEAR ALERTS
+    // -------------------------
     function clearAlerts() {
         alerts = [];
-        renderAlerts();
+
         updateAlertState();
+        renderAlerts();
     }
 
-    // -----------------------------
-    // DROPDOWN CONTROL
-    // -----------------------------
+    // -------------------------
+    // OPEN / CLOSE DROPDOWN
+    // -------------------------
     function openDropdown() {
         dropdown.classList.add('show');
         open = true;
@@ -99,15 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('click', closeDropdown);
 
-    // -----------------------------
+    // -------------------------
     // INITIAL STATE
-    // -----------------------------
+    // -------------------------
     updateAlertState();
     renderAlerts();
 
-    // -----------------------------
-    // DEV TESTING (remove later)
-    // -----------------------------
+    // -------------------------
+    // EXPOSE TO CONSOLE (IMPORTANT)
+    // -------------------------
     window.addAlert = addAlert;
     window.removeAlert = removeAlert;
     window.clearAlerts = clearAlerts;
