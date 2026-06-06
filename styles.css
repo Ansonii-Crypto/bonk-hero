@@ -60,7 +60,7 @@ header nav {
     background-color: #333;
 
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
 
     height: 40px;
@@ -75,6 +75,7 @@ header nav p {
     margin: 0;
     color: #8f35b3;
     font-size: 1.2rem;
+    justify-self: start;
 }
 
 header nav p:hover {
@@ -84,11 +85,11 @@ header nav p:hover {
 /* ---------------- CENTER LINKS ---------------- */
 
 header nav .links {
-    position: absolute;
-    left: 50%;
     transform: translateX(-50%);
 
     display: flex;
+    justify-content: center;
+    justify-self: center;
     gap: 1rem;
 }
 
@@ -117,6 +118,7 @@ header nav .right-controls {
     display: flex;
     align-items: center;
     gap: 10px;
+    justify-self: end;
 }
 
 /* =========================================================
