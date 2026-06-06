@@ -7,23 +7,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (savedTheme === "dark") {
         const transition = document.querySelector(".theme-transition");
-        const goingDark = !document.body.classList.contains("dark-theme");
+        const button = document.querySelector(".theme-switch");
 
-        transition.classList.add(
-            goingDark ? "active-right" : "active-left"
-        );
+        button.addEventListener("click", () => {
+            const isDark = document.body.classList.contains("dark-theme");
 
-        setTimeout(() => {
-            document.body.classList.toggle("dark-theme");
-        }, 250);
+            const direction = isDark ? "left" : "right";
 
-        setTimeout(() => {
-            transition.classList.remove(
-                "active-right",
-                "active-left"
+            // 1. start wipe
+            transition.classList.remove("active-left", "active-right");
+
+            // force reflow so restart always triggers
+            void transition.offsetWidth;
+
+            transition.classList.add(
+                direction === "right" ? "active-right" : "active-left"
             );
-        }, 500);
-        button.classList.add("dark");
+
+            // 2. switch theme mid-animation
+            setTimeout(() => {
+                document.body.classList.toggle("dark-theme");
+            }, 250);
+
+            // 3. cleanup after animation
+            setTimeout(() => {
+                transition.classList.remove("active-right", "active-left");
+            }, 500);
+        });
     }
 
     button.addEventListener("click", () => {

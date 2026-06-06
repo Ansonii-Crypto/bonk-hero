@@ -402,13 +402,14 @@ header nav .right-controls {
 .theme-transition {
     position: fixed;
     inset: 0;
+    pointer-events: none;
 
     background: #121212;
 
     transform: translateX(-100%);
     pointer-events: none;
 
-    z-index: 999999;
+    z-index: 9999;
 }
 
 .theme-transition.active-right {
