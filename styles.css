@@ -1,12 +1,9 @@
+/* =========================================================
+   BASE / RESET
+   ========================================================= */
+
 * {
     box-sizing: border-box;
-}
-
-:root {
-    --light-theme-bg: #ffffff;
-    --light-theme-text: #000000;
-    --dark-theme-bg: #121212;
-    --dark-theme-text: #ffffff;
 }
 
 html, body {
@@ -15,10 +12,30 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
+/* =========================================================
+   DESIGN TOKENS (THEME VARIABLES)
+   ========================================================= */
+
+:root {
+    --light-theme-bg: #ffffff;
+    --light-theme-text: #000000;
+
+    --dark-theme-bg: #121212;
+    --dark-theme-text: #ffffff;
+}
+
+/* =========================================================
+   LAYOUT CONTAINER
+   ========================================================= */
+
 .container {
     width: min(100% - 2rem, 1920px);
     margin: 0 auto;
 }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 header {
     background-color: #f4f4f4;
@@ -33,8 +50,13 @@ header svg {
     display: block;
 }
 
+/* =========================================================
+   NAVIGATION BAR (MAIN LAYOUT)
+   ========================================================= */
+
 header nav {
     background-color: #333;
+
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -45,6 +67,8 @@ header nav {
     user-select: none;
 }
 
+/* ---------------- LEFT BRAND ---------------- */
+
 header nav p {
     margin: 0;
     color: #8f35b3;
@@ -54,6 +78,8 @@ header nav p {
 header nav p:hover {
     color: #9b59b6;
 }
+
+/* ---------------- CENTER LINKS ---------------- */
 
 header nav .links {
     display: flex;
@@ -80,85 +106,121 @@ header nav .links a:hover {
     text-decoration: underline;
 }
 
+/* ---------------- RIGHT CONTROLS ---------------- */
+
 header nav .right-controls {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.alerts-btn {
-    background: none;
-    border: 1px solid #555;
-    color: white;
-    padding: 6px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: border-color 0.2s ease;
-}
+/* =========================================================
+   ALERTS SYSTEM
+   ========================================================= */
 
-header nav .right-controls .alerts-wrapper {
+/* Wrapper (positioning context) */
+.alerts-wrapper {
     position: relative;
     display: flex;
     align-items: center;
 }
 
+/* Alerts button */
+.alerts-btn {
+    position: relative;
+
+    background: none;
+    border: 1px solid #555;
+    color: white;
+
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    transition: border-color 0.2s ease;
+}
+
+/* Alert active state (notification indicator) */
 .alerts-wrapper.has-alerts .alerts-btn {
     animation: alertPulse 1.5s infinite;
     border-color: rgba(255, 76, 76, 0.6);
-    position: relative;
 }
 
+/* Red dot indicator */
 .alerts-wrapper.has-alerts .alerts-btn::after {
     content: "";
-    width: 8px;
-    height: 8px;
-    background: red;
-    border-radius: 50%;
+
     position: absolute;
     top: 6px;
     right: 6px;
+
+    width: 8px;
+    height: 8px;
+
+    background: red;
+    border-radius: 50%;
 }
 
-
-.alerts-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-
-    background: rgba(20, 20, 20, 0.55);
-    color: white;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    min-width: 160px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    opacity: 0;
-    transform: translateY(-10px);
-    visibility: hidden;
-    pointer-events: none;
-
-    transition: 
-        opacity 0.25s ease,
-        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-
-    z-index: 1000;
-}
-
-.alerts-dropdown.show {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-    pointer-events: auto;
-}
-
+/* Pulse animation */
 @keyframes alertPulse {
     0% { box-shadow: 0 0 0 rgba(255, 0, 0, 0); }
     50% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.45); }
     100% { box-shadow: 0 0 0 rgba(255, 0, 0, 0); }
 }
+
+/* =========================================================
+   DROPDOWN MENU
+   ========================================================= */
+
+.alerts-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    transform-origin: top right;
+
+    min-width: 160px;
+    padding: 10px;
+
+    background: rgba(20, 20, 20, 0.55);
+    color: white;
+
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    z-index: 1000;
+
+    /* hidden state */
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+        visibility 0s linear 0.25s;
+}
+
+/* visible state */
+.alerts-dropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+        visibility 0s;
+}
+
+/* =========================================================
+   ALERT ITEMS
+   ========================================================= */
 
 .alert-item {
     display: flex;
@@ -168,6 +230,7 @@ header nav .right-controls .alerts-wrapper {
     margin-bottom: 6px;
 
     border-radius: 6px;
+
     background: rgba(255, 255, 255, 0.06);
     color: #fff;
 
@@ -177,7 +240,7 @@ header nav .right-controls .alerts-wrapper {
     opacity: 0;
     transform: translateY(8px) scale(0.98);
 
-    transition: 
+    transition:
         opacity 0.25s ease,
         transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
         background-color 0.2s ease;
@@ -196,10 +259,28 @@ header nav .right-controls .alerts-wrapper {
     margin-bottom: 0;
 }
 
+/* Optional alert types */
 .alert-item.warning {
     border-left: 3px solid #ff4d4d;
 }
 
 .alert-item.success {
     border-left: 3px solid #4dff88;
+}
+
+/* =========================================================
+   ACCESSIBILITY HELPERS
+   ========================================================= */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
