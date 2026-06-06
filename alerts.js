@@ -5,21 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let open = false;
 
-    // -------------------------
-    // DATA (your alerts)
-    // -------------------------
     let alerts = [];
 
-    // -------------------------
-    // STATE: visual indicator
-    // -------------------------
     function updateAlertState() {
         wrapper.classList.toggle('has-alerts', alerts.length > 0);
     }
 
-    // -------------------------
-    // RENDER DROPDOWN
-    // -------------------------
     function renderAlerts() {
         dropdown.innerHTML = "";
 
@@ -46,9 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // -------------------------
-    // ADD ALERT
-    // -------------------------
     function addAlert(message) {
         alerts.push({
             id: Date.now(),
@@ -59,9 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderAlerts();
     }
 
-    // -------------------------
-    // REMOVE ALERT
-    // -------------------------
     function removeAlert(id) {
         alerts = alerts.filter(a => a.id !== id);
 
@@ -69,9 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderAlerts();
     }
 
-    // -------------------------
-    // CLEAR ALERTS
-    // -------------------------
     function clearAlerts() {
         alerts = [];
 
@@ -79,9 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderAlerts();
     }
 
-    // -------------------------
-    // OPEN / CLOSE DROPDOWN
-    // -------------------------
     function openDropdown() {
         dropdown.classList.add('show');
         open = true;
@@ -105,15 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('click', closeDropdown);
 
-    // -------------------------
-    // INITIAL STATE
-    // -------------------------
     updateAlertState();
     renderAlerts();
 
-    // -------------------------
-    // EXPOSE TO CONSOLE (IMPORTANT)
-    // -------------------------
     window.addAlert = addAlert;
     window.removeAlert = removeAlert;
     window.clearAlerts = clearAlerts;
