@@ -55,6 +55,8 @@ header svg {
    ========================================================= */
 
 header nav {
+    position: relative;
+
     background-color: #333;
 
     display: grid;
@@ -82,8 +84,11 @@ header nav p:hover {
 /* ---------------- CENTER LINKS ---------------- */
 
 header nav .links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
     display: flex;
-    justify-self: center;
     gap: 1rem;
 }
 
@@ -179,6 +184,8 @@ header nav .right-controls {
     transform-origin: top right;
 
     min-width: 160px;
+    max-height: 260px;
+    overflow-y: auto;
     padding: 10px;
 
     background: rgba(20, 20, 20, 0.55);
@@ -205,17 +212,31 @@ header nav .right-controls {
         visibility 0s linear 0.25s;
 }
 
+
 /* visible state */
 .alerts-dropdown.show {
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
     pointer-events: auto;
-
+    
     transition:
-        opacity 0.25s ease,
-        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-        visibility 0s;
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    visibility 0s;
+}
+
+.alerts-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.alerts-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.alerts-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
 }
 
 /* =========================================================
