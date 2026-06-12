@@ -1,54 +1,410 @@
 <!DOCTYPE html>
-<html lang="en-uk">
+<html>
     <head>
-        <title>BonkHero</title>
+        <meta charset="UTF-8" />
+        <title>My Site</title>
         <link rel="stylesheet" href="styles.css">
     </head>
+
     <body>
-        <div class="container">
-            <header>
-                <svg viewBox="0 0 1920 220" preserveAspectRatio="xMidYMid meet">
-                    <defs>
-                        <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#FF4843; stop-opacity:1"/>
-                            <stop offset="100%" style="stop-color:#FDEA97; stop-opacity:1"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M25 25 H1895 V195 H25 Z" fill="none" stroke="url(#frameGradient)" stroke-width="5"/>
-                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="48" font-family="Arial" font-weight="bold" fill="#333">BonkHero</text>
-                </svg>
-                <nav aria-label="Navigation bar" class="nav-bar">
-                    <p>BonkHero</p>
-                    <div class="links">
-                        <a draggable="false" href="#">Home</a>
-                        <a draggable="false" href="/leaderboard">Leaderboard</a>
-                        <a draggable="false" href="/social">Social</a>
-                    </div>
-                    <div class="right-controls">
-                        <button class="theme-switch" aria-label="Toggle theme">
-                            <span class="theme-icon sun">☀️</span>
-                            <span class="theme-icon moon">🌙</span>
-                            <span class="theme-slider"></span>
-                        </button>
-                        <div class="alerts-wrapper">
-                            <button class="alerts-btn">Alerts</button>
-
-                            <div class="alerts-dropdown">
-                                <p class="alert-item">No new alerts</p>
-                                <a class="alert-item" href="#">View all</a>
-                            </div>
-                        </div>
-
-                        <div class="Search">
-                            <label class="sr-only" for="search">Search</label>
-                            <input type="text" id="search" name="search" placeholder="Search...">
-                        </div>
-                    </div>
-                </nav>
-            </header>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="100vw" height="100vh" preserveAspectRatio="none" viewBox="0 0 1440 560">
+            <g clip-path="url(&quot;#SvgjsClipPath5993&quot;)" fill="none">
+                <rect width="100vw" height="100vh" x="0" y="0" fill="url(&quot;#SvgjsLinearGradient5994&quot;)"></rect>
+                <g class="star star1">
+                    <line x1="607.08" y1="355.08" x2="699" y2="447" stroke="url(#SvgjsLinearGradient5995)" stroke-width="1.6" stroke-linecap="round" filter="drop-shadow(0 0 4px #FD3F3F)"></line>
+                    <circle r="1.5" cx="699" cy="447" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star2">
+                    <line x1="31.98" y1="241.98" x2="114" y2="324" stroke="url(#SvgjsLinearGradient5996)" stroke-width="2.16" stroke-linecap="round" filter="drop-shadow(0 0 5.4px #5f91ff)"></line>
+                    <circle r="2.025" cx="114" cy="324" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star3">
+                    <line x1="1058.2" y1="62.2" x2="1148" y2="152" stroke="url(#SvgjsLinearGradient5997)" stroke-width="2.24" stroke-linecap="round" filter="drop-shadow(0 0 5.6px #54c076)"></line>
+                    <circle r="2.1" cx="1148" cy="152" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star4">
+                    <line x1="637.15" y1="-34.85" x2="722" y2="50" stroke="url(#SvgjsLinearGradient5998)" stroke-width="2.32" stroke-linecap="round" filter="drop-shadow(0 0 5.8px #5f91ff)"></line>
+                    <circle r="2.175" cx="722" cy="50" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star5">
+                    <line x1="686.43" y1="394.43" x2="743" y2="451" stroke="url(#SvgjsLinearGradient5999)" stroke-width="1.44" stroke-linecap="round" filter="drop-shadow(0 0 3.6px rgba(247, 255, 54, 1))"></line>
+                    <circle r="1.35" cx="743" cy="451" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star6">
+                    <line x1="552.26" y1="154.26" x2="606" y2="208" stroke="url(#SvgjsLinearGradient6000)" stroke-width="1.44" stroke-linecap="round" filter="drop-shadow(0 0 3.6px #54c076)"></line>
+                    <circle r="1.35" cx="606" cy="208" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star7">
+                    <line x1="733.75" y1="25.75" x2="808" y2="100" stroke="url(#SvgjsLinearGradient6001)" stroke-width="2.08" stroke-linecap="round" filter="drop-shadow(0 0 5.2px #54c076)"></line>
+                    <circle r="1.95" cx="808" cy="100" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star8">
+                    <line x1="1199.56" y1="264.56" x2="1283" y2="348" stroke="url(#SvgjsLinearGradient6002)" stroke-width="2.08" stroke-linecap="round" filter="drop-shadow(0 0 5.2px #54c076)"></line>
+                    <circle r="1.95" cx="1283" cy="348" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star9">
+                    <line x1="875.44" y1="329.44" x2="961" y2="415" stroke="url(#SvgjsLinearGradient6003)" stroke-width="1.76" stroke-linecap="round" filter="drop-shadow(0 0 4.4px #5f91ff)"></line>
+                    <circle r="1.65" cx="961" cy="415" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star10">
+                    <line x1="144.58" y1="402.58" x2="216" y2="474" stroke="url(#SvgjsLinearGradient6004)" stroke-width="1.12" stroke-linecap="round" filter="drop-shadow(0 0 2.8px #5f91ff)"></line>
+                    <circle r="1.05" cx="216" cy="474" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star11">
+                    <line x1="675.01" y1="3.01" x2="774" y2="102" stroke="url(#SvgjsLinearGradient6005)" stroke-width="1.2" stroke-linecap="round" filter="drop-shadow(0 0 3px #54c076)"></line>
+                    <circle r="1.125" cx="774" cy="102" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star12">
+                    <line x1="972.98" y1="-2.02" x2="1055" y2="80" stroke="url(#SvgjsLinearGradient6006)" stroke-width="2.4" stroke-linecap="round" filter="drop-shadow(0 0 6px #FD3F3F)"></line>
+                    <circle r="2.25" cx="1055" cy="80" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star13">
+                    <line x1="595.8" y1="154.8" x2="646" y2="205" stroke="url(#SvgjsLinearGradient6007)" stroke-width="2.24" stroke-linecap="round" filter="drop-shadow(0 0 5.6px rgba(247, 255, 54, 1))"></line>
+                    <circle r="2.1" cx="646" cy="205" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star14">
+                    <line x1="348.57" y1="237.57" x2="391" y2="280" stroke="url(#SvgjsLinearGradient6008)" stroke-width="0.8" stroke-linecap="round" filter="drop-shadow(0 0 2px #FD3F3F)"></line>
+                    <circle r="0.75" cx="391" cy="280" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star15">
+                    <line x1="165.66" y1="-27.34" x2="259" y2="66" stroke="url(#SvgjsLinearGradient6009)" stroke-width="1.2" stroke-linecap="round" filter="drop-shadow(0 0 3px rgba(247, 255, 54, 1))"></line>
+                    <circle r="1.125" cx="259" cy="66" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star16">
+                    <line x1="108.93" y1="4.93" x2="186" y2="82" stroke="url(#SvgjsLinearGradient6010)" stroke-width="2" stroke-linecap="round" filter="drop-shadow(0 0 5px #5f91ff)"></line>
+                    <circle r="1.875" cx="186" cy="82" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star17">
+                    <line x1="1129.19" y1="152.19" x2="1190" y2="213" stroke="url(#SvgjsLinearGradient6011)" stroke-width="1.28" stroke-linecap="round" filter="drop-shadow(0 0 3.2px #54c076)"></line>
+                    <circle r="1.2" cx="1190" cy="213" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star18">
+                    <line x1="375.12" y1="128.12" x2="443" y2="196" stroke="url(#SvgjsLinearGradient6012)" stroke-width="1.84" stroke-linecap="round" filter="drop-shadow(0 0 4.6px rgba(247, 255, 54, 1))"></line>
+                    <circle r="1.725" cx="443" cy="196" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star19">
+                    <line x1="109.59" y1="338.59" x2="210" y2="439" stroke="url(#SvgjsLinearGradient6013)" stroke-width="1.04" stroke-linecap="round" filter="drop-shadow(0 0 2.6px #54c076)"></line>
+                    <circle r="0.975" cx="210" cy="439" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star20">
+                    <line x1="480.5" y1="47.5" x2="530" y2="97" stroke="url(#SvgjsLinearGradient6014)" stroke-width="2.24" stroke-linecap="round" filter="drop-shadow(0 0 5.6px #FD3F3F)"></line>
+                    <circle r="2.1" cx="530" cy="97" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star21">
+                    <line x1="1114.65" y1="310.65" x2="1179" y2="375" stroke="url(#SvgjsLinearGradient6015)" stroke-width="1.68" stroke-linecap="round" filter="drop-shadow(0 0 4.2px rgba(247, 255, 54, 1))"></line>
+                    <circle r="1.575" cx="1179" cy="375" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star22">
+                    <line x1="1240.72" y1="274.72" x2="1298" y2="332" stroke="url(#SvgjsLinearGradient6016)" stroke-width="1.84" stroke-linecap="round" filter="drop-shadow(0 0 4.6px rgba(247, 255, 54, 1))"></line>
+                    <circle r="1.725" cx="1298" cy="332" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star23">
+                    <line x1="109.94" y1="419.94" x2="146" y2="456" stroke="url(#SvgjsLinearGradient6017)" stroke-width="1.6" stroke-linecap="round" filter="drop-shadow(0 0 4px #5f91ff)"></line>
+                    <circle r="1.5" cx="146" cy="456" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star24">
+                    <line x1="826.21" y1="161.21" x2="875" y2="210" stroke="url(#SvgjsLinearGradient6018)" stroke-width="2.32" stroke-linecap="round" filter="drop-shadow(0 0 5.8px rgba(247, 255, 54, 1))"></line>
+                    <circle r="2.175" cx="875" cy="210" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star25">
+                    <line x1="40.03" y1="-42.97" x2="127" y2="44" stroke="url(#SvgjsLinearGradient6019)" stroke-width="2.32" stroke-linecap="round" filter="drop-shadow(0 0 5.8px #FD3F3F)"></line>
+                    <circle r="2.175" cx="127" cy="44" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star26">
+                    <line x1="498.61" y1="-47.39" x2="587" y2="41" stroke="url(#SvgjsLinearGradient6020)" stroke-width="1.6" stroke-linecap="round" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></line>
+                    <circle r="1.5" cx="587" cy="41" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star27">
+                    <line x1="296.19" y1="314.19" x2="357" y2="375" stroke="url(#SvgjsLinearGradient6021)" stroke-width="1.6" stroke-linecap="round" filter="drop-shadow(0 0 4px #FD3F3F)"></line>
+                    <circle r="1.5" cx="357" cy="375" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star28">
+                    <line x1="683.45" y1="455.45" x2="728" y2="500" stroke="url(#SvgjsLinearGradient6022)" stroke-width="2.32" stroke-linecap="round" filter="drop-shadow(0 0 5.8px #5f91ff)"></line>
+                    <circle r="2.175" cx="728" cy="500" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star29">
+                    <line x1="317.23" y1="184.23" x2="354" y2="221" stroke="url(#SvgjsLinearGradient6023)" stroke-width="1.28" stroke-linecap="round" filter="drop-shadow(0 0 3.2px #5f91ff)"></line>
+                    <circle r="1.2" cx="354" cy="221" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star30">
+                    <line x1="196.66" y1="234.66" x2="290" y2="328" stroke="url(#SvgjsLinearGradient6024)" stroke-width="1.6" stroke-linecap="round" filter="drop-shadow(0 0 4px #FD3F3F)"></line>
+                    <circle r="1.5" cx="290" cy="328" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star31">
+                    <line x1="407.87" y1="427.87" x2="451" y2="471" stroke="url(#SvgjsLinearGradient6025)" stroke-width="1.04" stroke-linecap="round" filter="drop-shadow(0 0 2.6px #54c076)"></line>
+                    <circle r="0.975" cx="451" cy="471" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star32">
+                    <line x1="392.43" y1="111.43" x2="449" y2="168" stroke="url(#SvgjsLinearGradient6026)" stroke-width="1.84" stroke-linecap="round" filter="drop-shadow(0 0 4.6px #54c076)"></line>
+                    <circle r="1.725" cx="449" cy="168" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star33">
+                    <line x1="747.07" y1="355.07" x2="810" y2="418" stroke="url(#SvgjsLinearGradient6027)" stroke-width="1.04" stroke-linecap="round" filter="drop-shadow(0 0 2.6px #5f91ff)"></line>
+                    <circle r="0.975" cx="810" cy="418" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star34">
+                    <line x1="824.03" y1="30.03" x2="911" y2="117" stroke="url(#SvgjsLinearGradient6028)" stroke-width="2.08" stroke-linecap="round" filter="drop-shadow(0 0 5.2px #5f91ff)"></line>
+                    <circle r="1.95" cx="911" cy="117" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+                <g class="star star35">
+                    <line x1="1214.02" y1="423.02" x2="1272" y2="481" stroke="url(#SvgjsLinearGradient6029)" stroke-width="2.24" stroke-linecap="round" filter="drop-shadow(0 0 5.6px rgba(247, 255, 54, 1))"></line>
+                    <circle r="2.1" cx="1272" cy="481" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star36">
+                    <line x1="759.61" y1="96.61" x2="848" y2="185" stroke="url(#SvgjsLinearGradient6030)" stroke-width="1.6" stroke-linecap="round" filter="drop-shadow(0 0 4px #54c076)"></line>
+                    <circle r="1.5" cx="848" cy="185" fill="#54c076" filter="drop-shadow(0 0 4px #54c076)"></circle>
+                </g>
+                <g class="star star37">
+                    <line x1="1344.94" y1="162.94" x2="1381" y2="199" stroke="url(#SvgjsLinearGradient6031)" stroke-width="2.08" stroke-linecap="round" filter="drop-shadow(0 0 5.2px #FD3F3F)"></line>
+                    <circle r="1.95" cx="1381" cy="199" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star38">
+                    <line x1="-31.88" y1="-45.88" x2="36" y2="22" stroke="url(#SvgjsLinearGradient6032)" stroke-width="2.24" stroke-linecap="round" filter="drop-shadow(0 0 5.6px #FD3F3F)"></line>
+                    <circle r="2.1" cx="36" cy="22" fill="#fd3f3f" filter="drop-shadow(0 0 4px #FD3F3F)"></circle>
+                </g>
+                <g class="star star39">
+                    <line x1="52.61" y1="65.61" x2="141" y2="154" stroke="url(#SvgjsLinearGradient6033)" stroke-width="1.84" stroke-linecap="round" filter="drop-shadow(0 0 4.6px rgba(247, 255, 54, 1))"></line>
+                    <circle r="1.725" cx="141" cy="154" fill="rgba(247, 255, 54, 1)" filter="drop-shadow(0 0 4px rgba(247, 255, 54, 1))"></circle>
+                </g>
+                <g class="star star40">
+                    <line x1="155.69" y1="134.69" x2="196" y2="175" stroke="url(#SvgjsLinearGradient6034)" stroke-width="1.6" stroke-linecap="round" filter="drop-shadow(0 0 4px #5f91ff)"></line>
+                    <circle r="1.5" cx="196" cy="175" fill="#5f91ff" filter="drop-shadow(0 0 4px #5f91ff)"></circle>
+                </g>
+            </g>
+            <defs>
+                <clipPath id="SvgjsClipPath5993">
+                    <rect width="1440" height="560" x="0" y="0"></rect>
+                </clipPath>
+                <linearGradient x1="15.28%" y1="-39.29%" x2="84.72%" y2="139.29%" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient5994">
+                    <stop stop-color="#0e2a47" offset="0"></stop>
+                    <stop stop-color="rgba(47, 69, 98, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="699" y1="447" x2="607.08" y2="355.08" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient5995">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="114" y1="324" x2="31.98" y2="241.98" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient5996">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1148" y1="152" x2="1058.2" y2="62.2" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient5997">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="722" y1="50" x2="637.15" y2="-34.85" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient5998">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="743" y1="451" x2="686.43" y2="394.43" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient5999">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="606" y1="208" x2="552.26" y2="154.26" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6000">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="808" y1="100" x2="733.75" y2="25.75" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6001">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1283" y1="348" x2="1199.56" y2="264.56" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6002">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="961" y1="415" x2="875.44" y2="329.44" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6003">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="216" y1="474" x2="144.58" y2="402.58" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6004">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="774" y1="102" x2="675.01" y2="3.01" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6005">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1055" y1="80" x2="972.98" y2="-2.02" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6006">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="646" y1="205" x2="595.8" y2="154.8" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6007">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="391" y1="280" x2="348.57" y2="237.57" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6008">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="259" y1="66" x2="165.66" y2="-27.34" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6009">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="186" y1="82" x2="108.93" y2="4.93" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6010">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1190" y1="213" x2="1129.19" y2="152.19" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6011">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="443" y1="196" x2="375.12" y2="128.12" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6012">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="210" y1="439" x2="109.59" y2="338.59" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6013">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="530" y1="97" x2="480.5" y2="47.5" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6014">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1179" y1="375" x2="1114.65" y2="310.65" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6015">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1298" y1="332" x2="1240.72" y2="274.72" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6016">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="146" y1="456" x2="109.94" y2="419.94" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6017">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="875" y1="210" x2="826.21" y2="161.21" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6018">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="127" y1="44" x2="40.03" y2="-42.97" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6019">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="587" y1="41" x2="498.61" y2="-47.39" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6020">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="357" y1="375" x2="296.19" y2="314.19" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6021">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="728" y1="500" x2="683.45" y2="455.45" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6022">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="354" y1="221" x2="317.23" y2="184.23" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6023">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="290" y1="328" x2="196.66" y2="234.66" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6024">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="451" y1="471" x2="407.87" y2="427.87" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6025">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="449" y1="168" x2="392.43" y2="111.43" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6026">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="810" y1="418" x2="747.07" y2="355.07" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6027">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="911" y1="117" x2="824.03" y2="30.03" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6028">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1272" y1="481" x2="1214.02" y2="423.02" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6029">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="848" y1="185" x2="759.61" y2="96.61" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6030">
+                    <stop stop-opacity="1" stop-color="#54c076" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#54c076" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#54c076" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="1381" y1="199" x2="1344.94" y2="162.94" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6031">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="36" y1="22" x2="-31.88" y2="-45.88" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6032">
+                    <stop stop-opacity="1" stop-color="#fd3f3f" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#fd3f3f" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#fd3f3f" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="141" y1="154" x2="52.61" y2="65.61" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6033">
+                    <stop stop-opacity="1" stop-color="rgba(247, 255, 54, 1)" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="rgba(247, 255, 54, 1)" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="rgba(247, 255, 54, 1)" offset="1"></stop>
+                </linearGradient>
+                <linearGradient x1="196" y1="175" x2="155.69" y2="134.69" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient6034">
+                    <stop stop-opacity="1" stop-color="#5f91ff" offset="0"></stop>
+                    <stop stop-opacity="0.3" stop-color="#5f91ff" offset="0.7"></stop>
+                    <stop stop-opacity="0" stop-color="#5f91ff" offset="1"></stop>
+                </linearGradient>
+            </defs>
+        </svg>
+        
+        <!-- HEADER -->
+        <div id="header">
+            <div class="logo">My Website</div>
         </div>
-        <div class="theme-transition"></div>
 
-        <script type="module" src="main.js"></script>
+        <div id="menu">
+            <button class="menu-btn">Play</button>
+            <button class="menu-btn">News</button>
+            <button class="menu-btn">Skin Selection</button>
+            <button class="menu-btn">Friend List</button>
+            <button class="menu-btn">Tutorial</button>
+        </div>
+
+        <div id="side-panel" class="closed">
+            <div id="panel-content"></div>
+        </div>
+
+        <div id="game-panel">
+            <div class="game-content">
+                Game Mode Loaded
+            </div>
+        </div>
+
+        <script src="./main.js"></script>
     </body>
 </html>

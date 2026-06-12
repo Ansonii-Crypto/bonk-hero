@@ -1,449 +1,383 @@
-/* =========================================================
-   BASE / RESET
-   ========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
 html, body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* =========================================================
-   DESIGN TOKENS (THEME VARIABLES)
-   ========================================================= */
-
-:root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-
-    --nav-bg: #333;
-    --panel-bg: rgba(20, 20, 20, 0.55);
-
-    --link-color: #ffffff;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-body.dark-theme {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-
-    --nav-bg: #1e1e1e;
-    --panel-bg: rgba(35, 35, 35, 0.75);
-
-    --link-color: #ffffff;
-}
-
-/* =========================================================
-   LAYOUT CONTAINER
-   ========================================================= */
-
-.container {
-    width: min(100% - 2rem, 1920px);
-    margin: 0 auto;
-}
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-header {
-    background: var(--bg-color);
-    text-align: center;
-    min-height: 240px;
-    width: 100%;
-}
-
-header svg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* =========================================================
-   NAVIGATION BAR (MAIN LAYOUT)
-   ========================================================= */
-
-header nav {
-    position: relative;
-
-    background: var(--nav-bg);
-
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-
-    height: 40px;
-    padding: 0 clamp(0.75rem, 2vw, 1.5rem);
-
-    user-select: none;
-}
-
-/* ---------------- LEFT BRAND ---------------- */
-
-header nav p {
-    margin: 0;
-    color: #8f35b3;
-    font-size: 1.2rem;
-    justify-self: start;
-}
-
-header nav p:hover {
-    color: #9b59b6;
-}
-
-/* ---------------- CENTER LINKS ---------------- */
-
-header nav .links {
-    transform: translateX(-50%);
-
-    display: flex;
-    justify-content: center;
-    justify-self: center;
-    gap: 1rem;
-}
-
-header nav .links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 10px 14px;
-    border-radius: 4px;
-
-    color: #fff;
-    text-decoration: none;
-
-    transition: background-color 0.15s ease;
-}
-
-header nav .links a:hover {
-    background-color: #555;
-    text-decoration: underline;
-}
-
-/* ---------------- RIGHT CONTROLS ---------------- */
-
-header nav .right-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-self: end;
-}
-
-/* =========================================================
-   ALERTS SYSTEM
-   ========================================================= */
-
-/* Wrapper (positioning context) */
-.alerts-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-/* Alerts button */
-.alerts-btn {
-    position: relative;
-
-    background: none;
-    border: 1px solid #555;
+    height: 100%;
+    font-family: sans-serif;
+    background: #0f0f0f;
     color: white;
-
-    padding: 6px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-
-    transition: border-color 0.2s ease;
-}
-
-/* Alert active state (notification indicator) */
-.alerts-wrapper.has-alerts .alerts-btn {
-    animation: alertPulse 1.5s infinite;
-    border-color: rgba(255, 76, 76, 0.6);
-}
-
-/* Red dot indicator */
-.alerts-wrapper.has-alerts .alerts-btn::after {
-    content: "";
-
-    position: absolute;
-    top: 6px;
-    right: 6px;
-
-    width: 8px;
-    height: 8px;
-
-    background: red;
-    border-radius: 50%;
-}
-
-/* Pulse animation */
-@keyframes alertPulse {
-    0% { box-shadow: 0 0 0 rgba(255, 0, 0, 0); }
-    50% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.45); }
-    100% { box-shadow: 0 0 0 rgba(255, 0, 0, 0); }
-}
-
-/* =========================================================
-   DROPDOWN MENU
-   ========================================================= */
-
-.alerts-dropdown {
-    position: absolute;
-    top: calc(100% + 6px);
-    right: 0;
-    transform-origin: top right;
-
-    min-width: 160px;
-    max-height: 260px;
-    overflow-y: auto;
-    padding: 10px;
-
-    background: var(--panel-bg);
-    color: white;
-
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    z-index: 1000;
-
-    /* hidden state */
-    opacity: 0;
-    transform: translateY(-10px);
-    visibility: hidden;
-    pointer-events: none;
-
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-        visibility 0s linear 0.25s;
-}
-
-
-/* visible state */
-.alerts-dropdown.show {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-    pointer-events: auto;
-    
-    transition:
-    opacity 0.25s ease,
-    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-    visibility 0s;
-}
-
-.alerts-dropdown::-webkit-scrollbar {
-    width: 6px;
-}
-
-.alerts-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-}
-
-.alerts-dropdown::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.35);
-}
-
-/* =========================================================
-   ALERT SECTIONS
-   ========================================================= */
-
-.alert-section-title {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    opacity: 0.6;
-    margin: 8px 4px 6px;
-    text-transform: uppercase;
-}
-
-/* =========================================================
-   ALERT ITEMS
-   ========================================================= */
-
-.alert-item {
-    width: 100%;
-
-    display: block;
-    text-align: left;
-
-    word-break: break-word;
-    white-space: normal;
-
-    padding: 10px 12px;
-    margin-bottom: 6px;
-
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.06);
-    color: #fff;
-
-    font-size: 0.9rem;
-    line-height: 1.3;
-
-    opacity: 0;
-    transform: translateY(8px) scale(0.98);
-
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-        background-color 0.2s ease;
-}
-
-.alert-item.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-.alert-item:hover {
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.alert-item:last-child {
-    margin-bottom: 0;
-}
-
-/* Optional alert types */
-.alert-item.warning {
-    border-left: 3px solid #ff4d4d;
-}
-
-.alert-item.success {
-    border-left: 3px solid #4dff88;
-}
-
-/* =========================================================
-   ACCESSIBILITY HELPERS
-   ========================================================= */
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
 }
 
-/* =========================================================
-   THEME TOGGLE BUTTON
-    ========================================================= */
+/* body {
+    background-image: url('./assets/Shooting-Stars.svg');
+    background-size: cover;
+    background-position: center;
+} */
 
-.theme-switch {
-    position: relative;
+.star {
+    animation: drift 20s linear infinite;
+}
+
+.star1 {
+    animation: drift 15s linear infinite;
+    animation-delay: -7s;
+}
+
+.star2 {
+    animation: drift 30s linear infinite;
+    animation-delay: -15s;
+}
+
+.star3 {
+    animation: drift 12s linear infinite;
+    animation-delay: -4s;
+}
+
+.star4 {
+    animation: drift 25s linear infinite;
+    animation-delay: -10s;
+}
+
+.star5 {
+    animation: drift 18s linear infinite;
+    animation-delay: -6s;
+}
+
+.star6 {
+    animation: drift 22s linear infinite;
+    animation-delay: -3s;
+}
+
+.star7 {
+    animation: drift 14s linear infinite;
+    animation-delay: 0s;
+}
+
+.star8 {
+    animation: drift 16s linear infinite;
+    animation-delay: -8s;
+}
+
+.star9 {
+    animation: drift 21s linear infinite;
+    animation-delay: -19s;
+}
+
+.star10 {
+    animation: drift 13s linear infinite;
+    animation-delay: -5s;
+}
+
+.star11 {
+    animation: drift 22s linear infinite;
+    animation-delay: -12s;
+}
+
+.star12 {
+    animation: drift 13s linear infinite;
+    animation-delay: -2s;
+}
+
+.star13 {
+    animation: drift 27s linear infinite;
+    animation-delay: -9s;
+}
+
+.star14 {
+    animation: drift 20s linear infinite;
+    animation-delay: -14;
+}
+
+.star15 {
+    animation: drift 16s linear infinite;
+    animation-delay: -7;
+}
+
+.star16 {
+    animation: drift 14s linear infinite;
+    animation-delay: -2;
+}
+
+.star17 {
+    animation: drift 18s linear infinite;
+    animation-delay: -9;
+}
+
+.star18 {
+    animation: drift 28s linear infinite;
+    animation-delay: -14;
+}
+
+.star19 {
+    animation: drift 22s linear infinite;
+    animation-delay: -5;
+}
+
+.star20 {
+    animation: drift 13s linear infinite;
+    animation-delay: -6;
+}
+
+.star21 {
+    animation: drift 18s linear infinite;
+    animation-delay: -14;
+}
+
+.star22 {
+    animation: drift 19s linear infinite;
+    animation-delay: -7;
+}
+
+.star23 {
+    animation: drift 14s linear infinite;
+    animation-delay: -1;
+}
+
+.star24 {
+    animation: drift 20s linear infinite;
+    animation-delay: -0;
+}
+
+.star25 {
+    animation: drift 29s linear infinite;
+    animation-delay: -17;
+}
+
+.star26 {
+    animation: drift 26s linear infinite;
+    animation-delay: -14;
+}
+
+.star27 {
+    animation: drift 22s linear infinite;
+    animation-delay: -11;
+}
+
+.star28 {
+    animation: drift 19s linear infinite;
+    animation-delay: -8;
+}
+
+.star29 {
+    animation: drift 17s linear infinite;
+    animation-delay: -7;
+}
+
+.star30 {
+    animation: drift 16s linear infinite;
+    animation-delay: -12;
+}
+
+.star31 {
+    animation: drift 23s linear infinite;
+    animation-delay: -9;
+}
+
+.star32 {
+    animation: drift 15s linear infinite;
+    animation-delay: 0;
+}
+
+.star33 {
+    animation: drift 16s linear infinite;
+    animation-delay: -12;
+}
+
+.star34 {
+    animation: drift 14s linear infinite;
+    animation-delay: -5;
+}
+
+.star35 {
+    animation: drift 18s linear infinite;
+    animation-delay: -9;
+}
+
+.star36 {
+    animation: drift 18s linear infinite;
+    animation-delay: -5;
+}
+
+.star37 {
+    animation: drift 24s linear infinite;
+    animation-delay: -10;
+}
+
+.star38 {
+    animation: drift 17s linear infinite;
+    animation-delay: -8;
+}
+
+.star39 {
+    animation: drift 15s linear infinite;
+    animation-delay: 0;
+}
+
+.star40 {
+    animation: drift 16s linear infinite;
+    animation-delay: -8;
+}
+
+@keyframes drift {
+    from {
+        transform: translate(-100vw, -100vw);
+    }
+
+    to {
+        transform: translate(100vw, 100vw);
+    }
+}
+
+/* HEADER overlays content (does NOT push anything down) */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    transition: transform 0.8s ease;
+    z-index: 10;
+}
+
+/* slide out */
+#header.hide {
+    transform: translateY(-100%);
+}
+
+/* MENU CONTAINER */
+#menu {
+    position: absolute;
+
+    top: 50%;
+    left: 15%;
+
+    transform: translate(-50%, -50%);
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 12px;
 
-    width: 64px;
-    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #333;
 
-    padding: 4px;
-
-    border: 1px solid #555;
-    border-radius: 999px;
-
-    background: #2f2f2f;
-
-    cursor: pointer;
+    padding: 100px;
 }
 
-.theme-icon {
+/* BUTTON STYLE */
+.menu-btn {
+  width: 220px;
+  padding: 12px 16px;
+  font-size: 16px;
+
+  background: #1c1c1c;
+  color: white;
+  border: 1px solid #333;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.menu-btn:hover {
+  background: #2a2a2a;
+  transform: scale(1.03);
+}
+
+/* RIGHT SIDE PANEL */
+#side-panel {
+    position: absolute;
+    top: 50%;
+    left: calc(15% + 260px);
+    transform: translateY(-50%);
+
+    height: 420px;
+
+    width: 0px;
+    overflow: hidden; /* 🔥 CRITICAL */
+
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid #333;
+
+    display: flex;
+
+    transition: width 0.35s ease;
+}
+
+/* expanded */
+#side-panel.open {
+    width: 380px;
+}
+
+/* THIS is the trick */
+#panel-content {
+    min-width: 380px;   /* 🔥 prevents shrinking feel */
+    width: 380px;       /* lock layout space */
+    flex-shrink: 0;
+
+    padding: 20px;
+
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+
+    box-sizing: border-box;
+}
+
+#side-panel.open #panel-content {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* simple content styles */
+.panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.news-item, .friend-item {
+    padding: 10px;
+    background: #1b1b1b;
+    border: 1px solid #2c2c2c;
+}
+
+/* =========================
+   GAME PANEL (70% SCREEN)
+========================= */
+
+#game-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 70vw;
+    height: 70vh;
+
+    transform: translate(-50%, -50%) scale(0.95);
+
+    background: rgba(15, 15, 15, 0.92);
+    border: 1px solid #333;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.4s ease, transform 0.4s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    
-    width: 20px;
-    height: 20px;
-    
-    line-height: 1;
-    font-size: 14px;
-
-    z-index: 2;
 }
 
-.theme-slider {
-    position: absolute;
-
-    left: 4px;
-    top: 4px;
-
-    width: 22px;
-    height: 22px;
-
-    border-radius: 50%;
-    background: white;
-
-    transition: transform 0.25s ease;
+#game-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.theme-switch.dark .theme-slider {
-    transform: translateX(32px);
-}
-
-.theme-transition {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-
-    background: #121212;
-
-    transform: translateX(-100%);
-    pointer-events: none;
-
-    z-index: 9999;
-}
-
-.theme-transition.active-right {
-    animation: themeWipeRight 0.5s ease forwards;
-}
-
-.theme-transition.active-left {
-    animation: themeWipeLeft 0.5s ease forwards;
-}
-
-@keyframes themeWipeRight {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    50% {
-        transform: translateX(0%);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-@keyframes themeWipeLeft {
-    0% {
-        transform: translateX(100%);
-    }
-
-    50% {
-        transform: translateX(0%);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
+.game-content {
+    font-size: 24px;
 }
