@@ -6,6 +6,49 @@ const gamePanel = document.getElementById("game-panel");
 let currentView = null;
 let inGameMode = false;
 
+/* =========================
+   AUDIO SETUP
+========================= */
+
+const hoverSound = new Audio("./assets/audio/MenuButtonHover.wav");
+const clickSound = new Audio("./assets/audio/MenuButtonClick.wav");
+
+hoverSound.preload = "auto";
+clickSound.preload = "auto";
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play().catch(() => {});
+}
+
+// Unlock audio on first interaction (important for browsers)
+window.addEventListener("click", () => {
+    hoverSound.play().then(() => {
+        hoverSound.pause();
+        hoverSound.currentTime = 0;
+    }).catch(() => {});
+}, { once: true });
+
+/* =========================
+   UI SOUND BINDING (OPTION 2)
+========================= */
+
+document.querySelectorAll(".ui-sound").forEach(btn => {
+
+    btn.addEventListener("mouseenter", () => {
+        playSound(hoverSound);
+    });
+
+    btn.addEventListener("click", () => {
+        playSound(clickSound);
+    });
+
+});
+
+/* =========================
+   PANEL VIEWS
+========================= */
+
 const views = {
     news: `
         <div class="panel-section">
@@ -53,7 +96,6 @@ function closePanel() {
 
             panel.removeEventListener("transitionend", handleEnd);
 
-            // SAFE CLEANUP AFTER ANIMATION
             content.innerHTML = "";
             content.style.opacity = 0;
             currentView = null;
@@ -72,15 +114,16 @@ function setContent(view) {
     if (currentView === view) return;
 
     currentView = view;
-
     content.innerHTML = views[view];
     content.style.opacity = 1;
 }
 
 /* =========================
-   MENU CLICK HANDLER
+   MENU CLICK HANDLER (PANEL LOGIC)
 ========================= */
+
 document.querySelectorAll(".menu-btn").forEach(btn => {
+
     const text = btn.textContent.trim().toLowerCase();
 
     const map = {
@@ -91,20 +134,17 @@ document.querySelectorAll(".menu-btn").forEach(btn => {
 
     const target = map[text];
 
-    // Skip Play (handled separately)
     if (text === "play") return;
 
     btn.addEventListener("click", async () => {
         const isOpen = panel.classList.contains("open");
         const isSame = currentView === target;
 
-        // toggle close (with animation)
         if (isOpen && isSame) {
             await closePanel();
             return;
         }
 
-        // open or switch
         if (!isOpen) {
             openPanel(target);
         } else {
@@ -123,22 +163,18 @@ function enterGameMode() {
 
     const runTransition = async () => {
 
-        // 1. Always close panel FIRST (with animation if open)
         await closePanel();
 
-        // 2. Fade out menu + panel together
         menu.style.transition = "opacity 0.4s ease";
         panel.style.transition = "opacity 0.4s ease";
 
         menu.style.opacity = "0";
         panel.style.opacity = "0";
 
-        // 3. Wait for fade
         setTimeout(() => {
             menu.style.display = "none";
             panel.style.display = "none";
 
-            // 4. Show game panel
             gamePanel.classList.add("active");
         }, 400);
     };
