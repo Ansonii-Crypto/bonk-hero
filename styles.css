@@ -256,7 +256,6 @@ html, body {
 
     top: 50%;
     left: 15%;
-
     transform: translate(-50%, -50%);
 
     display: flex;
@@ -266,7 +265,7 @@ html, body {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid #333;
 
-    padding: 100px;
+    padding: 100px 100px 140px 100px;
 }
 
 /* BUTTON STYLE */
@@ -286,6 +285,31 @@ html, body {
 .menu-btn:hover {
   background: #2a2a2a;
   transform: scale(1.03);
+}
+
+.menu-utility {
+    position: absolute;
+    bottom: 30px;  /* sits inside padded area */
+    right: 30px;
+
+    display: flex;
+    gap: 10px;
+}
+
+.square-btn {
+    width: 48px;
+    height: 48px;
+
+    background: #1c1c1c;
+    border: 1px solid #333;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.square-btn:hover {
+    background: #2a2a2a;
+    transform: scale(1.05);
 }
 
 /* RIGHT SIDE PANEL */
