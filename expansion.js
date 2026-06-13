@@ -4,49 +4,9 @@ const menu = document.getElementById("menu");
 const gamePanel = document.getElementById("game-panel");
 
 let currentView = null;
-let inGameMode = false;
 
 /* =========================
-   AUDIO SETUP
-========================= */
-
-const hoverSound = new Audio("./assets/audio/MenuButtonHover.wav");
-const clickSound = new Audio("./assets/audio/MenuButtonClick.wav");
-
-hoverSound.preload = "auto";
-clickSound.preload = "auto";
-
-function playSound(sound) {
-    sound.currentTime = 0;
-    sound.play().catch(() => {});
-}
-
-// Unlock audio on first interaction (important for browsers)
-window.addEventListener("click", () => {
-    hoverSound.play().then(() => {
-        hoverSound.pause();
-        hoverSound.currentTime = 0;
-    }).catch(() => {});
-}, { once: true });
-
-/* =========================
-   UI SOUND BINDING (OPTION 2)
-========================= */
-
-document.querySelectorAll(".ui-sound").forEach(btn => {
-
-    btn.addEventListener("mouseenter", () => {
-        playSound(hoverSound);
-    });
-
-    btn.addEventListener("click", () => {
-        playSound(clickSound);
-    });
-
-});
-
-/* =========================
-   PANEL VIEWS
+   VIEWS
 ========================= */
 
 const views = {
@@ -72,124 +32,120 @@ const views = {
 };
 
 /* =========================
-   PANEL OPEN
+   CONTENT FADE
 ========================= */
-function openPanel(view) {
-    panel.classList.add("open");
-    setContent(view);
-}
 
-/* =========================
-   PANEL CLOSE (ANIMATED SAFE WIPE)
-========================= */
-function closePanel() {
-    return new Promise((resolve) => {
-        if (!panel.classList.contains("open")) {
-            resolve();
-            return;
-        }
-
-        panel.classList.remove("open");
-
-        const handleEnd = (e) => {
-            if (e.propertyName !== "width") return;
-
-            panel.removeEventListener("transitionend", handleEnd);
-
-            content.innerHTML = "";
-            content.style.opacity = 0;
-            currentView = null;
-
-            resolve();
-        };
-
-        panel.addEventListener("transitionend", handleEnd);
-    });
-}
-
-/* =========================
-   CONTENT SET
-========================= */
-function setContent(view) {
-    if (currentView === view) return;
+function swapContent(view) {
+    if (!view || currentView === view) return;
 
     currentView = view;
-    content.innerHTML = views[view];
-    content.style.opacity = 1;
+
+    content.style.opacity = "0";
+
+    setTimeout(() => {
+        content.innerHTML = views[view];
+        content.style.opacity = "1";
+    }, 120);
 }
 
 /* =========================
-   MENU CLICK HANDLER (PANEL LOGIC)
+   PANEL CONTROL
 ========================= */
 
-document.querySelectorAll(".menu-btn").forEach(btn => {
+function openPanel(view) {
+    panel.classList.add("open");
+    swapContent(view);
+}
 
-    const text = btn.textContent.trim().toLowerCase();
-
-    const map = {
-        "news": "news",
-        "friend list": "friends",
-        "skin selection": "skin"
-    };
-
-    const target = map[text];
-
-    if (text === "play") return;
-
-    btn.addEventListener("click", async () => {
-        const isOpen = panel.classList.contains("open");
-        const isSame = currentView === target;
-
-        if (isOpen && isSame) {
-            await closePanel();
-            return;
-        }
-
-        if (!isOpen) {
-            openPanel(target);
-        } else {
-            setContent(target);
-        }
-    });
-});
+function closePanel() {
+    panel.classList.remove("open");
+}
 
 /* =========================
-   PLAY TRANSITION
+   PLAY MODE TRANSITION
 ========================= */
 
 function enterGameMode() {
-    if (inGameMode) return;
-    inGameMode = true;
+    const run = async () => {
 
-    const runTransition = async () => {
+        // fade out submenu text first
+        content.style.opacity = "0";
 
-        await closePanel();
+        // wait for text fade
+        await new Promise(r => setTimeout(r, 150));
 
+        // close submenu
+        closePanel();
+
+        // fade out menu + panel together
         menu.style.transition = "opacity 0.4s ease";
         panel.style.transition = "opacity 0.4s ease";
 
         menu.style.opacity = "0";
         panel.style.opacity = "0";
 
-        setTimeout(() => {
-            menu.style.display = "none";
-            panel.style.display = "none";
+        await new Promise(r => setTimeout(r, 400));
 
-            gamePanel.classList.add("active");
-        }, 400);
+        // hide DOM elements
+        menu.style.display = "none";
+        panel.style.display = "none";
+
+        // show game UI
+        gamePanel.classList.add("active");
     };
 
-    runTransition();
+    run();
 }
 
 /* =========================
-   PLAY BUTTON HANDLER
+   SAFE VIEW HANDLER
+========================= */
+
+function requestView(view) {
+
+    // ignore invalid buttons (e.g. Tutorial)
+    if (!view || !views[view]) return;
+
+    const isOpen = panel.classList.contains("open");
+    const isSame = currentView === view;
+
+    if (isOpen && isSame) {
+        closePanel();
+        return;
+    }
+
+    if (!isOpen) {
+        openPanel(view);
+        return;
+    }
+
+    swapContent(view);
+}
+
+/* =========================
+   BUTTON BINDING
 ========================= */
 
 document.querySelectorAll(".menu-btn").forEach(btn => {
-    if (btn.textContent.trim().toLowerCase() !== "play") return;
+    const text = btn.textContent.trim().toLowerCase();
+
+    const map = {
+        "news": "news",
+        "friend list": "friends",
+        "skin selection": "skin",
+        "play": "play"
+        // "tutorial" intentionally not included
+    };
+
+    const target = map[text];
 
     btn.addEventListener("click", () => {
-        enterGameMode();
+
+        if (target === "play") {
+            enterGameMode();
+            return;
+        }
+
+        requestView(target);
     });
 });
